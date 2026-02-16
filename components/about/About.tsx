@@ -44,7 +44,7 @@ export const About = () => {
                         <div className="pt-6">
                             <h3 className="text-xl font-semibold mb-4 text-white">Core Technologies</h3>
                             <div className="flex flex-wrap gap-2">
-                                {["Python", "PyTorch", "TensorFlow", "React", "Next.js", "AWS", "Docker"].map((tech) => (
+                                {["Python", "PyTorch", "TensorFlow & Keras", "Scikit-learn", "OpenCV", "LangChain", "ChromaDB", "Google Gemini API", "HuggingFace", "Streamlit", "Flask", "PostgreSQL", "SQLite", "Pandas & NumPy", "Matplotlib", "NLTK", "Looker Studio"].map((tech) => (
                                     <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-sm font-mono text-[var(--color-neon-blue)]">
                                         {tech}
                                     </span>
