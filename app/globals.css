@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-space-grotesk);
+
+  --color-background: #050505;
+  --color-surface: #0a0a0a;
+  --color-neon-blue: #00f0ff;
+  --color-deep-blue: #0077ff;
+  --color-neon-purple: #7000ff;
+}
+
+:root {
+  --background: #050505;
+  --foreground: #ededed;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
