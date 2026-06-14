@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Github, ExternalLink, Layers, FileText, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export interface Project {
     id: string;
@@ -62,12 +63,13 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                             </button>
 
                             <div className="h-64 sm:h-80 w-full bg-gray-900 relative">
-                                {/* Placeholder for image */}
-                                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-surface)]" />
-                                <img
+                                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-surface)] z-10" />
+                                <Image
                                     src={project.thumbnail}
                                     alt={project.title}
-                                    className="w-full h-full object-cover opacity-60"
+                                    fill
+                                    sizes="(max-width: 896px) 100vw, 896px"
+                                    className="object-cover opacity-60"
                                 />
                                 <div className="absolute bottom-6 left-6 sm:left-10">
                                     <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">{project.title}</h2>
@@ -98,11 +100,13 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                                                 Screenshots
                                             </h3>
                                             <div className="relative group">
-                                                <div className="aspect-video bg-black/30 rounded-xl overflow-hidden border border-white/10">
-                                                    <img
+                                                <div className="aspect-video bg-black/30 rounded-xl overflow-hidden border border-white/10 relative">
+                                                    <Image
                                                         src={project.screenshots![currentScreenshot]}
                                                         alt={`Screenshot ${currentScreenshot + 1}`}
-                                                        className="w-full h-full object-contain"
+                                                        fill
+                                                        sizes="(max-width: 896px) 100vw, 600px"
+                                                        className="object-contain"
                                                     />
                                                 </div>
                                                 {project.screenshots!.length > 1 && (
@@ -180,14 +184,16 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                                     </div>
 
                                     <div className="flex flex-col gap-3">
-                                        <a
-                                            href={project.repoUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center justify-center gap-2 w-full py-3 bg-[var(--color-surface)] border border-[var(--color-foreground)]/20 hover:bg-white hover:text-black transition-all rounded-lg font-medium"
-                                        >
-                                            <Github size={20} /> View Source
-                                        </a>
+                                        {project.repoUrl && (
+                                            <a
+                                                href={project.repoUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center justify-center gap-2 w-full py-3 bg-[var(--color-surface)] border border-[var(--color-foreground)]/20 hover:bg-white hover:text-black transition-all rounded-lg font-medium"
+                                            >
+                                                <Github size={20} /> View Source
+                                            </a>
+                                        )}
                                         {project.demoUrl && (
                                             <a
                                                 href={project.demoUrl}

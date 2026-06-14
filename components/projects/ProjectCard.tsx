@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, Expand } from "lucide-react";
+import Image from "next/image";
 import { Project } from "./ProjectModal";
 
 interface ProjectCardProps {
@@ -26,12 +27,22 @@ export const ProjectCard = ({ project, onClick, index }: ProjectCardProps) => {
 
             {/* Thumbnail */}
             <div className="relative h-48 w-full overflow-hidden bg-gray-900">
-                <img
+                <Image
                     src={project.thumbnail}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-surface)] to-transparent" />
+
+                {/* Click indicator overlay */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 text-white text-sm font-medium">
+                        <Expand size={14} />
+                        View Details
+                    </div>
+                </div>
             </div>
 
             {/* Content */}
@@ -41,16 +52,18 @@ export const ProjectCard = ({ project, onClick, index }: ProjectCardProps) => {
                         {project.title}
                     </h3>
                     <div className="flex gap-2">
-                        <a
-                            href={project.repoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="p-2 bg-white/5 rounded-full hover:bg-white hover:text-black transition-colors"
-                            title="View Source"
-                        >
-                            <Github size={16} />
-                        </a>
+                        {project.repoUrl && (
+                            <a
+                                href={project.repoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="p-2 bg-white/5 rounded-full hover:bg-white hover:text-black transition-colors"
+                                title="View Source"
+                            >
+                                <Github size={16} />
+                            </a>
+                        )}
                     </div>
                 </div>
 

@@ -16,8 +16,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Raditya Fauzan | Portfolio",
-  description: "",
+  title: "Raditya Fauzan | AI & ML Engineer",
+  description: "Raditya Fauzan — AI/ML Engineer & Mathematics student at Universitas Indonesia. Building intelligent systems with PyTorch, LangChain, and modern ML stacks.",
 };
 
 export default function RootLayout({

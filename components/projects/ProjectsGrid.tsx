@@ -6,21 +6,29 @@ import { ProjectModal, Project } from "./ProjectModal";
 
 const PROJECTS: Project[] = [
     {
+        id: "8",
+        title: "Comparative Evaluation of DPO and GRPO on Qwen 3 0.6B",
+        description: "Benchmarking DPO vs GRPO alignment techniques on a small language model for mathematical reasoning, with custom multi-component reward engineering.",
+        longDescription: "This team research project explores how to improve the mathematical reasoning capabilities of a smaller language model by comparing two alignment techniques: Direct Preference Optimization (DPO) and Group Relative Policy Optimization (GRPO) on the Qwen 3 0.6B model.\n\nData Preparation: We processed the Hendrycks MATH dataset, filtering for high-difficulty problems (Level 4 and 5) to ensure training on complex reasoning tasks.\n\nBaseline Training: We established a baseline by performing Supervised Fine-Tuning (SFT) via QLoRA, training the model to generate consistent step-by-step reasoning and valid LaTeX formatting.\n\nAlignment Training: We implemented both DPO and GRPO. For GRPO, we engineered a custom multi-component reward function evaluating responses based on format compliance, mathematical correctness, reasoning quality, and optimal token length.\n\nResults (automated + manual Chain-of-Thought evaluation):\n• GRPO achieved the highest Exact Match at 9.8%\n• Final Format & Boxed Rate: 82.2% — fastest generation at 14.4 seconds\n• Manual CoT scoring: GRPO 2.78 > SFT 2.70 > DPO 2.44\n• Conclusion: GRPO demonstrated superior reasoning quality and format adherence over both baselines.",
+        thumbnail: "/projects/dpo_grpo.png",
+        technologies: ["PyTorch", "QLoRA", "DPO", "GRPO", "HuggingFace TRL", "Qwen 3 0.6B", "Hendrycks MATH"],
+        repoUrl: "",
+    },
+    {
         id: "1",
         title: "Dementia Brain MRI Generation using Conditional DCGAN",
         description: "A bioinformatics research project using Conditional Deep Convolutional GANs to generate synthetic brain MRI images across different Alzheimer's dementia stages.",
-        longDescription: "Developed as a project for a Bioinformatics class, this work addresses the critical challenge of data scarcity and class imbalance in medical imaging. The system utilizes a Conditional Deep Convolutional GAN (cDCGAN) to synthesize high-quality 128x128 grayscale brain MRI images that correspond to four distinct Alzheimer's dementia severity stages from the OASIS dataset: Non-Dementia, Very Mild, Mild, and Moderate. \n\nThe technical implementation features a Generator that fuses a 100-dimensional noise vector with specific stage-label embeddings to achieve controlled, on-demand image generation. To ensure realism and training stability, the architecture incorporates Batch Normalization, LeakyReLU activations, and Mixed Precision (AMP) training. Beyond pure generation, the model is integrated with the HuggingFace Hub, allowing researchers to easily download weights and run inference scripts for educational and data augmentation purposes. This project highlights my ability to build sophisticated generative models that serve practical research needs in healthcare AI.",
+        longDescription: "Developed as a project for a Bioinformatics class, this work addresses the critical challenge of data scarcity and class imbalance in medical imaging. The system utilizes a Conditional Deep Convolutional GAN (cDCGAN) to synthesize high-quality 128×128 grayscale brain MRI images corresponding to four distinct Alzheimer's dementia severity stages from the OASIS dataset: Non-Dementia, Very Mild, Mild, and Moderate.\n\nThe technical implementation features a Generator that fuses a 100-dimensional noise vector with specific stage-label embeddings to achieve controlled, on-demand image generation. To ensure realism and training stability, the architecture incorporates Batch Normalization, LeakyReLU activations, and Mixed Precision (AMP) training. Beyond pure generation, the model is integrated with the HuggingFace Hub, allowing researchers to easily download weights and run inference scripts for educational and data augmentation purposes.",
         thumbnail: "/projects/dementia_mri.png",
         technologies: ["Bioinformatics", "Conditional DCGAN", "Computer Vision", "OASIS Dataset", "PyTorch", "HuggingFace Hub"],
-        repoUrl: "https://github.com/argamavanesa/dementia-prediction-gan",
-        demoUrl: "https://dementia-prediction-gan-model.streamlit.app/",
+        repoUrl: "",
         screenshots: ["/Dementia Brain MR.jpeg"]
     },
     {
         id: "2",
         title: "Face Recognition Attendance System",
-        description: "Touchless, automated attendance system using computer vision with real-time detection and anti-spoofing.",
-        longDescription: "In many organizational settings, manual attendance tracking is prone to errors and \"buddy punching.\" This project was developed to modernize this process by leveraging computer vision to create a touchless, automated attendance system.\n\nThe core challenge was balancing real-time detection speed with high accuracy. I implemented a system that doesn't just recognize a face once but manages a continuous video stream, processing frames at 2-second intervals to optimize CPU usage.\n\nTo ensure the system's reliability in a professional environment, I built a custom \"cooldown\" logic that prevents multiple logs from the same person within a short window. This project demonstrates my ability to build a full-stack application where complex AI models are integrated into a functional web backend with persistent database storage.",
+        description: "Touchless, automated attendance system using computer vision with real-time face detection and anti-spoofing logic.",
+        longDescription: "In many organizational settings, manual attendance tracking is prone to errors and \"buddy punching.\" This project modernizes the process by leveraging computer vision to create a touchless, automated attendance system.\n\nThe core challenge was balancing real-time detection speed with high accuracy. I implemented a system that manages a continuous video stream, processing frames at 2-second intervals to optimize CPU usage. A custom cooldown logic prevents multiple logs from the same person within a short window, ensuring reliability in a professional environment.\n\nThis project demonstrates my ability to build a full-stack application where complex computer vision models are integrated into a functional web backend with persistent PostgreSQL storage.",
         thumbnail: "/projects/face_recognition.png",
         technologies: ["Python (Flask 2.x)", "PostgreSQL", "OpenCV & NumPy", "dlib", "Bootstrap 5 & JS"],
         repoUrl: "https://github.com/RadityF/Face-Recognition-Attendance-System",
@@ -30,7 +38,7 @@ const PROJECTS: Project[] = [
         id: "3",
         title: "PDF-Based RAG System",
         description: "Retrieval-Augmented Generation system transforming static PDF documents into interactive knowledge bases.",
-        longDescription: "Static documents like long PDF reports often contain vast amounts of \"trapped\" information that is difficult to search through. This project utilizes a Retrieval-Augmented Generation (RAG) architecture to transform these static files into interactive knowledge bases.\n\nBy using HuggingFace for local embeddings, the system maintains cost efficiency and data privacy for the initial processing phase. When a user asks a question, the system performs a similarity search within a ChromaDB vector store to find the most relevant context. This context is then fed into Google Gemini Flash, allowing the LLM to generate precise, grounded answers based strictly on the uploaded document. This project showcases my proficiency in modern LLM orchestration and vector database management.",
+        longDescription: "Static documents like long PDF reports often contain vast amounts of \"trapped\" information that is difficult to search through. This project utilizes a Retrieval-Augmented Generation (RAG) architecture to transform these static files into interactive knowledge bases.\n\nBy using HuggingFace for local embeddings, the system maintains cost efficiency and data privacy during the initial processing phase. When a user asks a question, the system performs a similarity search within a ChromaDB vector store to find the most relevant context. This context is then fed into Google Gemini Flash, allowing the LLM to generate precise, grounded answers based strictly on the uploaded document.",
         thumbnail: "/projects/rag_system.png",
         technologies: ["Google Gemini API", "LangChain", "ChromaDB", "HuggingFace Embeddings", "Streamlit"],
         repoUrl: "https://github.com/RadityF/PDF-Based-Question-Answering-using-Local-Embeddings-and-Google-Gemini-LLM-",
@@ -40,28 +48,28 @@ const PROJECTS: Project[] = [
         id: "4",
         title: "Cloud Data Security Risk Analysis",
         description: "Cybersecurity anomaly detection using Isolation Forests and Tree SHAP for explainable AI.",
-        longDescription: "Security in the cloud is often compromised not by infrastructure failures, but by anomalous user behavior. This project approaches cybersecurity from a mathematical perspective, using the Isolation Forest algorithm to detect high-risk activities.\n\nUnlike traditional rule-based systems, this model learns to \"isolate\" anomalies by identifying data points that require fewer splits to be separated in a tree structure. To solve the \"black box\" problem common in Machine Learning, I integrated Tree SHAP (SHapley Additive exPlanations). This allows the system to not only flag an activity as risky but also explain why—for example, indicating that a high anomaly score was driven specifically by a failed login attempt from an unusual geographic location.\n\nThe model's core scoring is governed by the following formula:\n$$s(x,n)=2^{-\\frac{E(h(x))}{c(n)}}$$",
+        longDescription: "Security in the cloud is often compromised not by infrastructure failures, but by anomalous user behavior. This project approaches cybersecurity from a mathematical perspective, using the Isolation Forest algorithm to detect high-risk activities.\n\nUnlike traditional rule-based systems, this model learns to \"isolate\" anomalies by identifying data points that require fewer splits to be separated in a tree structure. To solve the \"black box\" problem common in Machine Learning, I integrated Tree SHAP (SHapley Additive exPlanations). This allows the system to not only flag an activity as risky but also explain why — for example, indicating that a high anomaly score was driven specifically by a failed login attempt from an unusual geographic location.\n\nThe model's core scoring is governed by the following formula:\n$$s(x,n)=2^{-\\frac{E(h(x))}{c(n)}}$$",
         thumbnail: "/projects/cloud_security.png",
         technologies: ["Python", "Scikit-learn (Isolation Forest)", "Tree SHAP", "Pandas & NumPy", "Matplotlib"],
         repoUrl: "",
-        documentPdfUrl: "/cloud data security risk.pdf"
+        documentPdfUrl: "/cloud_security_risk.pdf"
     },
     {
         id: "5",
         title: "Heart Disease Prediction (ANN)",
-        description: "Deep learning model for medical diagnosis with hyperparameter tuning and class balancing.",
-        longDescription: "Medical diagnosis requires extreme precision, where the cost of a \"false negative\" can be life-threatening. This project involved building a deep learning model to predict heart disease using clinical data such as cholesterol levels and blood pressure.\n\nI focused heavily on the mathematical preprocessing of the data, using Z-Score normalization and Random OverSampler to ensure the neural network wasn't biased toward the majority class (healthy patients). I utilized Keras Tuner to perform a Random Search across the hyperparameter space, finding the optimal balance of neurons and dropout rates to maximize the F1-Score. This project highlights my ability to apply rigorous statistical methods to complex deep learning architectures.",
+        description: "Deep learning model for binary & multiclass medical diagnosis achieving 87% accuracy with Keras Tuner hyperparameter optimization.",
+        longDescription: "Medical diagnosis requires extreme precision, where the cost of a false negative can be life-threatening. This project involved building a deep learning model to predict heart disease using clinical data such as cholesterol levels and blood pressure.\n\nI focused heavily on the mathematical preprocessing of the data, using Z-Score normalization and Random OverSampler to ensure the neural network wasn't biased toward the majority class (healthy patients). I utilized Keras Tuner to perform a Random Search across the hyperparameter space, finding the optimal balance of neurons and dropout rates.\n\nResults:\n• Binary classification: 87% accuracy — only 4 misclassifications out of 30 patients, with precision, recall, and F1-score all at ~0.87.\n• Multiclass classification: 60% accuracy, macro F1-score 0.29, revealing the inherent challenge of class imbalance across severity levels — an honest and important finding for clinical context.",
         thumbnail: "/projects/heart_disease.png",
         technologies: ["TensorFlow & Keras", "Keras Tuner", "Scikit-learn", "Matplotlib"],
-        repoUrl: "https://github.com/username/project",
+        repoUrl: "",
         documentUrl: "https://docs.google.com/presentation/d/1InAMzGPVyzxo0JhnPUXFbWPRrVNiWSFa-zWKQP9g1iU/edit?usp=sharing",
-        documentPdfUrl: "/Heart Deases.pdf"
+        documentPdfUrl: "/heart_disease_prediction.pdf"
     },
     {
         id: "6",
         title: "E-Commerce Customer Sentiment Analysis (Tokopedia)",
-        description: "NLP pipeline for analyzing public Review on E-commerce using Naive Bayes and custom slang normalization.",
-        longDescription: "In the competitive e-commerce landscape, understanding customer feedback is vital for business growth. This project focuses on analyzing public sentiment for a specific store on Tokopedia by transforming raw user reviews into actionable insights. The primary challenge lies in the nature of Indonesian e-commerce reviews, which are heavily saturated with slang, regional dialects, and informal abbreviations.\n\nTo address this, I built a robust NLP pipeline that begins with data labeling—converting numerical ratings (1–5) into binary sentiment categories (Positive and Negative). I developed a specialized preprocessing engine that utilizes a custom normalization dictionary to \"translate\" informal slang into standard Indonesian, followed by the Sastrawi library for precise stemming to reduce words to their base forms.\n\nFor the classification logic, I implemented a Gaussian Naive Bayes model. By pairing this with TF-IDF vectorization, the system can identify which specific keywords (e.g., \"cepat\", \"kecewa\", \"original\") have the most significant impact on the overall sentiment score. This lightweight yet powerful combination ensures high-speed inference, making it an ideal solution for a store owner to monitor customer satisfaction in real-time.",
+        description: "NLP pipeline for Indonesian e-commerce reviews achieving 84% F1-score with custom slang normalization and Naive Bayes classification.",
+        longDescription: "In the competitive e-commerce landscape, understanding customer feedback is vital for business growth. This project analyzes public sentiment for a specific Tokopedia store by transforming raw user reviews into actionable insights. The primary challenge lies in Indonesian e-commerce reviews, which are heavily saturated with slang, regional dialects, and informal abbreviations.\n\nI built a robust NLP pipeline that begins with data labeling — converting numerical ratings (1–5) into binary sentiment categories. I developed a specialized preprocessing engine using a custom normalization dictionary to translate informal slang into standard Indonesian, followed by the Sastrawi library for precise stemming.\n\nFor classification, I implemented a Gaussian Naive Bayes model with TF-IDF vectorization, identifying keywords like \"cepat\", \"kecewa\", and \"original\" that have the most significant impact on sentiment.\n\nResults (193 test samples):\n• Accuracy: 84% — 162 correct predictions (71 negative, 91 positive)\n• Macro F1-score: 0.84 · Weighted F1-score: 0.84\n• Recall for positive sentiment class: 0.91",
         thumbnail: "/projects/sentiment_analysis.png",
         technologies: ["Python", "Scikit-learn", "Sastrawi", "NLTK", "Pandas"],
         repoUrl: "https://github.com/RadityF/streamlit_app-Sentiment-Analysis-Tokopedia-Review-",
@@ -69,14 +77,14 @@ const PROJECTS: Project[] = [
     {
         id: "7",
         title: "Sales Performance Dashboard",
-        description: "Business intelligence dashboard for pharmaceutical sales tracking and KPI visualization.",
-        longDescription: "In a retail environment, raw transaction data is meaningless without context. Working within a simulated environment for Kimia Farma, I developed a comprehensive Business Intelligence dashboard to monitor pharmaceutical sales performance across multiple regions.\n\nThe project began with writing complex SQL queries to aggregate millions of rows of data, focusing on key performance indicators (KPIs) like revenue growth and product popularity. The final output was an interactive dashboard in Google Data Studio that allows stakeholders to drill down into specific branches or time periods to identify underperforming sectors. This project demonstrates my ability to translate technical data into actionable business strategy.",
+        description: "Business intelligence dashboard for pharmaceutical sales tracking and KPI visualization across multiple regions.",
+        longDescription: "In a retail environment, raw transaction data is meaningless without context. Working within a simulated environment for Kimia Farma, I developed a comprehensive Business Intelligence dashboard to monitor pharmaceutical sales performance across multiple regions.\n\nThe project began with writing complex SQL queries to aggregate data, focusing on key performance indicators (KPIs) like revenue growth and product popularity. The final output is an interactive dashboard in Looker Studio that allows stakeholders to drill down into specific branches or time periods to identify underperforming sectors.",
         thumbnail: "/projects/sales_dashboard.png",
-        technologies: ["SQLite", "Looker Studio", "Data cleaning", "Data Modeling"],
-        repoUrl: "https://github.com/username/project",
+        technologies: ["SQLite", "Looker Studio", "Data Cleaning", "Data Modeling"],
+        repoUrl: "",
         demoUrl: "https://lookerstudio.google.com/reporting/3e283702-f539-4ad6-b5f4-76ac48ba9c35",
         screenshots: ["/dashboard.jpeg"]
-    }
+    },
 ];
 
 export const ProjectsGrid = () => {

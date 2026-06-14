@@ -34,11 +34,12 @@ export const HeroBackground = () => {
             });
         }
 
+        let animationId: number;
+
         const animate = () => {
             ctx.clearRect(0, 0, width, height);
 
-            // Update and draw nodes
-            ctx.fillStyle = "rgba(0, 240, 255, 0.5)"; // Neon Blue
+            ctx.fillStyle = "rgba(0, 240, 255, 0.5)";
             nodes.forEach((node) => {
                 node.x += node.vx;
                 node.y += node.vy;
@@ -51,7 +52,6 @@ export const HeroBackground = () => {
                 ctx.fill();
             });
 
-            // Draw connections
             ctx.strokeStyle = "rgba(0, 240, 255, 0.15)";
             ctx.lineWidth = 1;
             for (let i = 0; i < nodes.length; i++) {
@@ -69,7 +69,7 @@ export const HeroBackground = () => {
                 }
             }
 
-            requestAnimationFrame(animate);
+            animationId = requestAnimationFrame(animate);
         };
 
         animate();
@@ -80,7 +80,10 @@ export const HeroBackground = () => {
         };
 
         window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            cancelAnimationFrame(animationId);
+        };
     }, []);
 
     return (
