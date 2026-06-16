@@ -14,11 +14,31 @@ const NAV_LINKS = [
 export const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState("");
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 40);
-        window.addEventListener("scroll", onScroll);
+        window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    useEffect(() => {
+        const ids = NAV_LINKS.map(l => l.href.replace("#", ""));
+        const sections = ids.map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setActiveSection("#" + entry.target.id);
+                    }
+                });
+            },
+            { rootMargin: "-40% 0px -50% 0px" }
+        );
+
+        sections.forEach(s => observer.observe(s));
+        return () => observer.disconnect();
     }, []);
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -57,9 +77,16 @@ export const Navbar = () => {
                                 key={link.href}
                                 href={link.href}
                                 onClick={(e) => handleNavClick(e, link.href)}
-                                className="text-sm text-[var(--foreground)]/60 hover:text-[var(--foreground)] transition-colors"
+                                className={`text-sm transition-colors relative ${
+                                    activeSection === link.href
+                                        ? "text-[var(--color-neon-blue)]"
+                                        : "text-[var(--foreground)]/60 hover:text-[var(--foreground)]"
+                                }`}
                             >
                                 {link.label}
+                                {activeSection === link.href && (
+                                    <span className="absolute -bottom-1 left-0 right-0 h-px bg-[var(--color-neon-blue)]/60 rounded-full" />
+                                )}
                             </a>
                         ))}
                         <a

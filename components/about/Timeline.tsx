@@ -34,7 +34,7 @@ const TimelineItem = ({ year, title, subtitle, description, type, index }: Timel
             className="relative pl-8 pb-6 border-l border-white/10 last:pb-0"
         >
             <div
-                className="absolute left-[-9px] top-0 flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-surface)] border"
+                className="absolute left-[-9px] top-0 flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-background)] border"
                 style={{ borderColor: color }}
             >
                 <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: color }} />

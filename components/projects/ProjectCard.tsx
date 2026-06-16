@@ -19,7 +19,7 @@ export const ProjectCard = ({ project, onClick, index }: ProjectCardProps) => {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
             layoutId={`project-card-${project.id}`}
-            className="group relative bg-[var(--color-surface)] rounded-xl border border-white/10 overflow-hidden cursor-pointer hover:border-[var(--color-neon-blue)]/50 transition-colors"
+            className="group relative bg-[var(--color-surface)] rounded-xl border border-white/10 overflow-hidden cursor-pointer hover:border-[var(--color-neon-blue)]/50 transition-all duration-500 hover:shadow-[0_0_35px_rgba(0,240,255,0.08),0_0_1px_rgba(0,240,255,0.3)]"
             onClick={() => onClick(project)}
         >
             {/* Glow Effect */}

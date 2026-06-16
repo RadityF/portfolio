@@ -25,3 +25,18 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-text-animated {
+  background: linear-gradient(90deg, #00f0ff, #0077ff, #7000ff, #00f0ff);
+  background-size: 300% auto;
+  animation: gradient-flow 4s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

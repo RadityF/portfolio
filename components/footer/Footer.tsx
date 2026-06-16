@@ -10,10 +10,7 @@ const SOCIAL_LINKS = [
 
 export const Footer = () => {
     return (
-        <footer
-            id="contact"
-            className="w-full border-t border-white/5 bg-[var(--color-surface)] py-10 px-4 md:px-10"
-        >
+        <footer className="w-full border-t border-white/5 bg-[var(--color-surface)] py-10 px-4 md:px-10">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="text-center md:text-left">
                     <p className="text-sm font-mono text-[var(--color-neon-blue)] mb-1">Raditya_Fauzan</p>

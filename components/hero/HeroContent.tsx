@@ -37,7 +37,7 @@ export const HeroContent = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-5xl md:text-7xl font-bold tracking-tight mb-4"
             >
-                Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-neon-blue)] to-[var(--color-deep-blue)]">Intelligence</span>
+                Engineering <span className="gradient-text-animated">Intelligence</span>
             </motion.h1>
 
             {/* Professional Title */}
